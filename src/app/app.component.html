@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <h1>JSON Data in table using Angular</h1>
+    <table class="table table-inverse table-striped table-bordered">
+      <thead>
+        <tr>
+          <th id="pointer" (click)="sort('name')">
+            NAME
+            <i class="fa" 
+            [ngClass]="{'fa-sort': column != 'name', 
+            'fa-sort-asc': (column == 'name' && isDesc), 
+            'fa-sort-desc': (column == 'name' && !isDesc) }" 
+            aria-hidden="true"> </i>
+          </th>
+          <th class="pointer" (click)="sort('category')">
+            CATEGORY
+            <i class="fa" 
+            [ngClass]="{'fa-sort': column != 'category', 
+            'fa-sort-asc': (column == 'category' && isDesc), 
+            'fa-sort-desc': (column == 'category' && !isDesc) }" 
+            aria-hidden="true"> </i>
+          </th>
+          <th class="pointer" (click)="sort('amount')">
+            AMOUNT
+            <i class="fa" 
+            [ngClass]="{'fa-sort': column != 'amount', 
+            'fa-sort-asc': (column == 'amount' && isDesc), 
+            'fa-sort-desc': (column == 'amount' && !isDesc) }" 
+            aria-hidden="true"> </i>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let detail of details | orderBy: {property: column, direction: direction}">
+          <td>{{detail.name}}</td>
+          <td>{{detail.category}}</td>
+          <td>{{detail.amount}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
